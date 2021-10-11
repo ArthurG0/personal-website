@@ -1,0 +1,15 @@
+.HomeMainDiv {
+    width: 90vw;
+    height: 90vh;
+    text-align: center;
+    display: flex;
+    margin: 5vh 5vw;
+    border: none;
+}
+
+.HomeCenterText {
+    margin: 20% auto 0 auto;
+    font-family: "Poppins";
+    font-size: 4rem;
+    font-weight: 600;
+}

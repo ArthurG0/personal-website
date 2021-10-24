@@ -66,6 +66,7 @@ function MontyHall(props) {
       
     useEffect(() => {
         console.log('initializing app')
+        document.title = "Monty Hall Paradox"
         app = initializeApp(firebaseConfig);
         FirestoreRef.current = getFirestore();
         // if(Door1Ref.current) Door1Ref.current.srcObj = closedDoor
@@ -78,6 +79,7 @@ function MontyHall(props) {
 
         console.log(process.env.REACT_APP_AAA)
         console.log(process.env.AAAA)
+
 
     }, [])
 

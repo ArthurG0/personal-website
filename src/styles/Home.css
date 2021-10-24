@@ -7,8 +7,101 @@
 }
 
 .HomeCenterText {
-    margin: 13% auto 0 auto;
+    margin: 25vh auto 0 auto;
     font-family: "Poppins";
     font-size: 4rem;
     font-weight: 600;
+    line-height: 1em;
+}
+
+.HomeIntroText {
+    font-family: 'Montserrat';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.FlyIn {
+    transition-property: margin;
+    transition-duration: 2s;
+}
+
+.FlyIn.DownLevel1 {
+    margin-top: 80vh;
+}
+
+.FlyIn.DownLevel2 {
+    margin-top: 84vh;
+}
+
+.FlyIn.DownLevel3 {
+    margin-top: 88vh !important;
+}
+
+.FlyIn.Level1 {
+    margin-top: 2vh;
+}
+
+.FlyIn.Level2 {
+    margin-top: 6vh;
+}
+
+.FlyIn.Level3 {
+    margin-top: 10vh !important;
+}
+
+.Flex {
+    display: flex;
+    margin: 10vh auto auto auto;
+    justify-content: center;
+}
+
+.Home.SectionWrapper {
+    margin-top: 5vh;
+}
+
+.Home.Section {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    width: 40%;
+    max-width: 385px;
+    vertical-align: middle;
+    border: 1px solid black;
+    margin: 0 0.7%;
+    border-radius: 4vh;
+    text-decoration: none;
+    color: black;
+}
+
+.Home.Section:hover {
+    border: 3px solid black;
+}
+
+
+
+.RelativeElement {
+    position: relative;
+}
+
+.Home.RelativeElement {
+    height: 5vh;
+}
+
+@media only screen and (min-aspect-ratio: 7 / 8) {
+    .HomeCenterText {
+        font-size: 4rem;
+    }
+
+    .Home.Section {
+        padding: 10vh 0;
+    }
+}
+
+@media only screen and (max-aspect-ratio: 7 / 8) {
+    .HomeCenterText {
+        font-size: 3rem;
+    }
+    .Home.Section {
+        padding: 6vh 0;
+    }
 }

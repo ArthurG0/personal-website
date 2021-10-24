@@ -1,0 +1,103 @@
+.MontyHallMain {
+    text-align: center;
+    font-family: 'Poppins';
+
+}
+
+.MontyHallLabel {
+    font-size: 2em;
+    margin: 2% 0;   
+}
+
+.MontyHallDoorsFlex {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    /* background-color: white; */
+}
+
+.MontyHallSpan {
+    opacity: 0;
+}
+
+.MontyHallSpan.revealed {
+    opacity: 1;
+}
+
+.ChatBoxText {
+    font-size: 1.4vw;
+    word-spacing: 0.2em;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1em;
+    border-bottom: 1vw solid #d0a978;
+    position:relative;
+    margin-bottom: 5%;
+    text-align: left;
+    min-height: 5.5em;
+ }
+ .corner {
+    position:absolute;
+    width: 10vw;
+    right:2vw;
+    bottom:0;
+    transform: translateY(80%); 
+ }
+
+.DoorWrapper {
+    width: 30%;
+    position: relative;
+}
+
+.DoorWrapper > img {
+    max-width: 100%;
+}
+
+.DoorLabel {
+    margin: auto;
+    position: absolute;
+    left: 0; bottom: -35px; right: 0;
+    font-family: 'Poppins';
+    font-size: 1.2em;
+}
+
+.MontyHallPlayAgainButton {
+    display: block;
+    margin: 10px auto;
+    background-color: #d0a978;
+    border: 0;
+    padding: 10px;
+    border-radius: 25px;
+    height: 50px;
+    width: 150px;
+    font-weight: 700;
+    font-family: 'Poppins';
+    font-size: 1em;
+    color: white;
+    opacity: 0;
+}
+
+.MontyHallPlayAgainButton.revealed {
+    opacity: 1;
+}
+
+.MontyHallStatsTable,  .MontyHallStatsTable > tbody, .MontyHallStatsTable tr, .MontyHallStatsTable td {
+    border: 1px solid black;
+    text-align: left;
+}
+
+.MontyHallStatsTable {
+    margin: auto;
+    opacity: 0;
+}
+
+.MontyHallStatsTable.revealed {
+    margin: auto;
+    opacity: 1;
+}
+
+.MontyHallStatsTable td {
+    padding: 10px;
+}

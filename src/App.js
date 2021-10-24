@@ -8,6 +8,9 @@ import {
 import fonts from './fonts.css'
 import baseStyle from './App.css'
 import Home from './components/Home'
+import MontyHall from './components/MontyHall'
+import dotenv from 'dotenv'
+dotenv.config()
 
 function App() {
   return (
@@ -15,6 +18,9 @@ function App() {
       <Switch>
         <Route exact path="/" >
           <Home/>
+        </Route>
+        <Route exact path="/monty-hall" >
+          <MontyHall/>
         </Route>
 
         <Route path='*' >

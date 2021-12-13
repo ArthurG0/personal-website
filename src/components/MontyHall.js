@@ -9,6 +9,8 @@ import midOpen from '../assets/monty-hall/mh-mid.jpg'
 import openCar from '../assets/monty-hall/mh-open-car.jpg'
 import openGoat from '../assets/monty-hall/mh-open-goat.jpg'
 import closedDoor from '../assets/monty-hall/mh-closed.jpg'
+import wikipic1 from '../assets/monty-hall/mh-wikipic1.png'
+import wikipic2 from '../assets/monty-hall/mh-wikipic2.png'
 import '../styles/MontyHall.css'
 
 
@@ -16,6 +18,7 @@ function MontyHall(props) {
 
     const [statsData, setStatsData] = useState({})
     const [statsLoaded, setStatsLoaded] = useState(false)
+    const [infoShown, setInfoShown] = useState(false)
     const [numOfGames, setNumOfGames] = useState(0)
     const [selectionStatus, setSelectionStatus] = useState('none')
     const [doorPrizes, setDoorPrizes] = useState(generatePrizes())
@@ -59,6 +62,25 @@ function MontyHall(props) {
     let introText = 'Welcome to the Monty Hall Paradox! Behind these doors is ' +
     'one brand new car and two goats. Try your luck, and hopefully win a shiny new car! Click on a door to open it.'
 
+    let infoTextPart1 = 'The Monty Hall problem is a brain teaser, in the form of a probability puzzle. ' + 
+    'It became famous as a question from Marilyn vos Savant\'s "Ask Marilyn" column in Parade magazine in 1990'
+
+    let infoTextPart2 = 'Suppose you\'re on a game show, and you\'re given the choice of three doors: Behind one door is a car; behind the others, goats. ' + 
+    'You pick a door, say No. 1, and the host, who knows what\'s behind the doors, opens another door, say No. 3, which has a goat. ' + 
+    'He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice?'
+
+    let infoTextPart3 = 'Vos Savant\'s response was that the contestant should switch to the other door. Under the standard assumptions, the switching strategy has a ' + 
+    '2/3 probability of winning the car, while the strategy that remains with the initial choice has only a 1/3 probability.'
+
+    let infoTextPart4 = 'When the player first makes their choice, there is a 2/3 chance that the car is behind one of the doors not chosen. ' + 
+    'This probability does not change after the host opens one of the unchosen doors. When the host provides information about the 2 unchosen doors ' + 
+    '(revealing that one of them does not have the car behind it), the 2/3 chance of the car being behind one of the unchosen doors rests ' + 
+    'on the unchosen and unrevealed door, as opposed to the 1/3 chance of the car being behind the door the contestant chose initially.'
+
+    let infoTextPart5 = 'Many readers of vos Savant\'s column refused to believe switching is beneficial and rejected her explanation. ' + 
+    'After the problem appeared in Parade, approximately 10,000 readers, including nearly 1,000 with PhDs, wrote to the magazine, most of them calling vos Savant wrong. ' + 
+    'Even when given explanations, simulations, and formal mathematical proofs, many people still did not accept that switching is the best strategy. ' + 
+    'Paul Erdős, one of the most prolific mathematicians in history, remained unconvinced until he was shown a computer simulation demonstrating vos Savant\'s predicted result.'
 
       
       
@@ -75,7 +97,7 @@ function MontyHall(props) {
         getInitialData()
         setTimeout(() => {
             chatBoxAddText(introText)
-        }, 200)
+        }, 2000)
 
         console.log(process.env.REACT_APP_AAA)
         console.log(process.env.AAAA)
@@ -86,37 +108,40 @@ function MontyHall(props) {
     let chatBox = 
         <div className="ChatBoxText" ref={TextRef}>
             <svg class="corner" viewBox="0 0 65 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M35 3.5L65 6.5V62L0 0L35 3.5Z" fill="white"/>
+                <path d="M25 3.5L45 6.5V42L0 0L25 3.5Z or" fill="white"/>
             </svg>
         </div>
 
     let statistics = statsLoaded ? 
-        <table className="MontyHallStatsTable">
-            <tbody>
-                <tr>
-                    <td>
-                    Times people swapped: {statsData.swap_total}
-                    </td>
-                    <td>
-                    Times swaps resulted in car: {statsData.swap_success}
-                    </td>
-                    <td>
-                    Swap winrate: {Math.round(statsData.swap_success / statsData.swap_total * 100) + '%'}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    Times people stayed: {statsData.stay_total}
-                    </td>
-                    <td>
-                    Times stays resulted in car: {statsData.stay_success}
-                    </td>
-                    <td>
-                    Stay winrate: {Math.round(statsData.stay_success / statsData.stay_total * 100) + '%'}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="MontyHallStatsTableWrapper">
+            <div>The curious statistics of Monty Hall Paradox</div>
+            <table className="MontyHallStatsTable">
+                <tbody>
+                    <tr>
+                        <td>
+                        Times people swapped: {statsData.swap_total}
+                        </td>
+                        <td>
+                        Times swaps resulted in car: {statsData.swap_success}
+                        </td>
+                        <td>
+                        Swap winrate: {Math.round(statsData.swap_success / statsData.swap_total * 100) + '%'}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        Times people stayed: {statsData.stay_total}
+                        </td>
+                        <td>
+                        Times stays resulted in car: {statsData.stay_success}
+                        </td>
+                        <td>
+                        Stay winrate: {Math.round(statsData.stay_success / statsData.stay_total * 100) + '%'}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         : ""
 
@@ -125,7 +150,36 @@ function MontyHall(props) {
 
     return (
         <div className="MontyHallMain">
-            <div className="MontyHallLabel">Monty Hall Paradox</div>
+            {infoShown ? 
+                <div>
+                    <div className="MontyHallOverlay" onClick={exitOverlay}>
+                        <div className="MontyHallInfoSection">
+                            <div className="MontyHallInfoHeader">The Monty Hall Paradox: The explanation</div>
+                            <div className="MontyHallInfoBackground">{infoTextPart1}</div>
+                            <img src={wikipic1}></img>
+                            <div className="MontyHallInfoBackground code">{infoTextPart2}</div>
+                            <div className="MontyHallInfoBackground">{infoTextPart3}</div>
+                            <img src={wikipic2}></img>
+                            <div className="MontyHallInfoBackground">{infoTextPart5}</div>
+
+                        </div>
+                    </div>
+                </div>
+            : ""}
+            <div className="MontyHallLabel">
+                <span style={{fontVariantCaps: 'petite-caps'}}>The Monty Hall Paradox</span>
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="32" height="32"
+                    viewBox="0 0 32 32"
+                    className="MontyHallInfoIcon"
+                    alt="Click to Learn More"
+                    onClick={infoIconClicked}
+                >
+                    <path d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 12 L 17 12 L 17 10 Z M 15 14 L 15 22 L 17 22 L 17 14 Z">
+                    </path>
+                </svg>
+            </div>
             {
                 chatBox
             }
@@ -150,11 +204,19 @@ function MontyHall(props) {
                         {
                             doors
                         }
-                        <button
-                            className="MontyHallPlayAgainButton"
-                            id="MontyHallPlayAgainBtn"
-                            onClick={playAgainClicked}
-                        >Play Again</button>
+                        <div className="MontyHallButtonRow">
+                            <button
+                                className="MontyHallPlayAgainButton"
+                                id="MontyHallPlayAgainBtn"
+                                onClick={playAgainClicked}
+                            >Play Again</button>
+                            <button
+                                className="MontyHallPlayAgainButton hollow"
+                                id="MontyHallLearnBtn"
+                                onClick={learnButtonClicked}
+                            >Learn More</button>
+
+                        </div>
                         {
                             statistics
                         }
@@ -174,7 +236,6 @@ function MontyHall(props) {
         setStatsLoaded(true)
 
     }
-
 
     async function button1Clicked() {
         console.log('button1')
@@ -298,8 +359,14 @@ function MontyHall(props) {
         // TextRef.current.childNodes.forEach(node => {
         //     if(node.nodeName === 'SPAN' && node.className.indexOf('revealed') === -1) node.classList.add('revealed')
         // })
-
-        while (TextRef.current.firstChild) TextRef.current.removeChild(TextRef.current.firstChild)
+        let cornerElement
+        while (TextRef.current.firstChild){
+            if(TextRef.current.firstChild.nodeName == 'svg') cornerElement = TextRef.current.firstChild
+            TextRef.current.removeChild(TextRef.current.firstChild)
+        }
+        TextRef.current.appendChild(
+            cornerElement
+        )
         let characters = []
         text.split("").forEach(char => {
             if(char === '\n'){
@@ -310,7 +377,7 @@ function MontyHall(props) {
             newSpan.classList.add('MontyHallSpan')
             newSpan.innerHTML = char
             TextRef.current.appendChild(newSpan)
-            characters.push({span: newSpan, delay: 35})
+            characters.push({span: newSpan, delay: 75})
         })
 
         revealOneCharacterAtATime(characters)
@@ -335,9 +402,9 @@ function MontyHall(props) {
     }
 
     function generateSecondLine(chosenDoor, openedDoor) {
-        let textToDisplay = `Awesome - you chose door ${chosenDoor + 1}. Now see that ${openedDoor + 1} has `
+        let textToDisplay = `Awesome - you chose door ${chosenDoor + 1}. Now see that door ${openedDoor + 1} has `
         textToDisplay += 'a goat inside. Would you like to change your choice of doors before we reveal the prizes? '
-        textToDisplay += `\nClick on door ${chosenDoor + 1} to stay with your ogirinal choice, or click on the other door to switch.`
+        textToDisplay += `\nClick on door ${chosenDoor + 1} to stay with your original choice, or click on the other door to switch.`
 
         return textToDisplay
     }
@@ -396,13 +463,15 @@ function MontyHall(props) {
         setSelectionStatus('none')
         chatBoxAddText(introText)
         document.getElementById('MontyHallPlayAgainBtn').classList.remove('revealed')
+        document.getElementById('MontyHallLearnBtn').classList.remove('revealed')
     }
 
     function showStatistics(){
-        document.getElementsByClassName('MontyHallStatsTable')[0].classList.add('revealed')
+        document.getElementsByClassName('MontyHallStatsTableWrapper')[0].classList.add('revealed')
     }
     function revealPlayAgainButton() {
         document.getElementById('MontyHallPlayAgainBtn').classList.add('revealed')
+        document.getElementById('MontyHallLearnBtn').classList.add('revealed')
     }
 
     async function recordResult(didWin, didSwap) {
@@ -429,9 +498,19 @@ function MontyHall(props) {
         else if(!didSwap && didWin) current_state.stay_success++;
 
         setStatsData(current_state)
+    }
 
+    function infoIconClicked(){
+        console.log('info clicked')
+        setInfoShown(true)
+    }
 
+    function exitOverlay(){
+        setInfoShown(false)
+    }
 
+    function learnButtonClicked(){
+        setInfoShown(true)
     }
 }
 

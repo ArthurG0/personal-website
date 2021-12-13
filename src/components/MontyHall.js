@@ -262,9 +262,9 @@ function MontyHall(props) {
     function doorHover(index) {
         console.log(`door ${index} hover`)
         let ref;
-        if(index == 0) ref = Door1Ref
-        else if(index == 1) ref = Door2Ref
-        else if(index == 2) ref = Door3Ref
+        if(index === 0) ref = Door1Ref
+        else if(index === 1) ref = Door2Ref
+        else if(index === 2) ref = Door3Ref
         if(selectionStatus === 'none'){
             ref.current.src = barelyOpen
         }
@@ -284,9 +284,9 @@ function MontyHall(props) {
     function doorMouseOut(index) {
         console.log(`door ${index} mouse out`)
         let ref;
-        if(index == 0) ref = Door1Ref
-        else if(index == 1) ref = Door2Ref
-        else if(index == 2) ref = Door3Ref
+        if(index === 0) ref = Door1Ref
+        else if(index === 1) ref = Door2Ref
+        else if(index === 2) ref = Door3Ref
         if(selectionStatus === 'none'){
             ref.current.src = closedDoor
         }
@@ -314,7 +314,7 @@ function MontyHall(props) {
             setSelectionStatus(`selected:${index} opened:${doorToOpen}`)
             revealDoor(doorToOpen)
             chatBoxAddText(generateSecondLine(index, doorToOpen))
-            let otherChoice = [0,1,2].filter(x => (x != index && x != doorToOpen))[0]
+            let otherChoice = [0,1,2].filter(x => (x !== index && x !== doorToOpen))[0]
             document.getElementById(`MontyHallDoor${otherChoice}Label`).innerHTML += ' (switch)'
             document.getElementById(`MontyHallDoor${index}Label`).innerHTML += ' (stay)'
         }
@@ -329,7 +329,7 @@ function MontyHall(props) {
         else {
             let didSwitch;
             let didWin;
-            if(index == selectionStatus.split(' ')[0][selectionStatus.split(' ')[0].length - 1]){
+            if(index === selectionStatus.split(' ')[0][selectionStatus.split(' ')[0].length - 1]){
                 didSwitch = false
             } else didSwitch = true
             if(doorPrizes[index] === 'car') didWin = true
@@ -347,9 +347,9 @@ function MontyHall(props) {
     }
 
     function getDoorRef(index){
-        if(index == 0) return Door1Ref
-        else if(index == 1) return Door2Ref
-        else if(index == 2) return Door3Ref
+        if(index === 0) return Door1Ref
+        else if(index === 1) return Door2Ref
+        else if(index === 2) return Door3Ref
     }
 
     function chatBoxAddText(text) {
@@ -361,7 +361,7 @@ function MontyHall(props) {
         // })
         let cornerElement
         while (TextRef.current.firstChild){
-            if(TextRef.current.firstChild.nodeName == 'svg') cornerElement = TextRef.current.firstChild
+            if(TextRef.current.firstChild.nodeName === 'svg') cornerElement = TextRef.current.firstChild
             TextRef.current.removeChild(TextRef.current.firstChild)
         }
         TextRef.current.appendChild(
@@ -433,7 +433,7 @@ function MontyHall(props) {
         console.log('here are the prizes:')
         console.log(doorPrizes)
         let options = [0,1,2].filter(x => {
-            return (x != chosenDoor && doorPrizes[x] != 'car')
+            return (x !== chosenDoor && doorPrizes[x] !== 'car')
         })
         console.log('here are our options')
         console.log(options)

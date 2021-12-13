@@ -9,6 +9,7 @@ import fonts from './fonts.css'
 import baseStyle from './App.css'
 import Home from './components/Home'
 import MontyHall from './components/MontyHall'
+import Reaction from './components/Reaction'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/monty-hall" >
           <MontyHall/>
+        </Route>
+        <Route exact path="/reaction" >
+          <Reaction/>
         </Route>
 
         <Route path='*' >

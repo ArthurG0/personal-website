@@ -1,0 +1,39 @@
+.PersonalProjects {
+    padding: 10vh 0 0 0;
+    font-family: 'Mustica';
+}
+
+.IndividualProject {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 10vh;
+}
+
+.IPLeftSide {
+    width: 45%;
+}
+
+.IPRightSide {
+    width: 45%;
+}
+
+.IPPhoto {
+    width: 100%;
+}
+
+.IPPhotoWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.IPName {
+    font-size: 2em;
+    margin-bottom: 5vh;
+}
+
+.IPDesc {
+    margin-bottom: 5vh;
+}

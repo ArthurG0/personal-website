@@ -4,104 +4,81 @@
     text-align: center;
     margin: 5vh 5vw;
     border: none;
+    scroll-behavior: smooth;
 }
 
-.HomeCenterText {
-    margin: 25vh auto 0 auto;
-    font-family: "Poppins";
-    font-size: 4rem;
-    font-weight: 600;
-    line-height: 1em;
+.ProfilePic {
+    border-radius: 100%;
+    width: 35vh;
 }
 
-.HomeIntroText {
-    font-family: 'Montserrat';
-    position: absolute;
-    left: 0;
-    right: 0;
+.HomeGreeting {
+    font-family: 'Mustica';
+    font-size: 2.5em;
+    padding-top: 3vh;
+    padding-bottom: 0vh;
 }
 
-.FlyIn {
-    transition-property: margin;
-    transition-duration: 2s;
+.HomeSection {
+    font-family: 'Mustica';
+    font-size: 2.5em;
+    padding-top: 10vh;
+    padding-bottom: 3vh;
 }
 
-.FlyIn.DownLevel1 {
-    margin-top: 80vh;
+.HomeAbout {
+    font-family: 'Mustica';
+    padding: 1.5vh;
+    font-size: 1.3em;
+    width: 70%;
+    margin: auto;
 }
 
-.FlyIn.DownLevel2 {
-    margin-top: 84vh;
-}
-
-.FlyIn.DownLevel3 {
-    margin-top: 88vh !important;
-}
-
-.FlyIn.Level1 {
-    margin-top: 2vh;
-}
-
-.FlyIn.Level2 {
-    margin-top: 6vh;
-}
-
-.FlyIn.Level3 {
-    margin-top: 10vh !important;
-}
-
-.Flex {
+.Home.Flex.Row{
     display: flex;
-    margin: 10vh auto auto auto;
     justify-content: center;
 }
 
-.Home.SectionWrapper {
-    margin-top: 5vh;
+.Home.Icon {
+    width: 3vw;
+    padding: 0 1vh;
 }
 
-.Home.Section {
-    font-family: 'Montserrat';
-    font-weight: 600;
-    width: 40%;
-    max-width: 385px;
-    vertical-align: middle;
-    border: 1px solid black;
-    margin: 0 0.7%;
-    border-radius: 4vh;
+
+.Home.Icon:hover {
+    transform: scale(1.1);
+}
+
+.Home.HeaderBar {
+    width: 100%;
+    height: 6vh;
+    background-color: #d0a978;
+    display: flex;
+    justify-content: center;
+}
+
+.Home.HeaderBar > a {
+    font-family: 'Mustica';
     text-decoration: none;
-    color: black;
+    color: #ffffff;
+    line-height: 6vh;
+    display: block;
+    margin: 0 1vw;
 }
 
-.Home.Section:hover {
-    border: 3px solid black;
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+
 }
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
 
-
-
-.RelativeElement {
-    position: relative;
-}
-
-.Home.RelativeElement {
-    height: 5vh;
-}
-
-@media only screen and (min-aspect-ratio: 7 / 8) {
-    .HomeCenterText {
-        font-size: 4rem;
+    .Home.Icon {
+        width: 8vw;
     }
 
-    .Home.Section {
-        padding: 10vh 0;
-    }
-}
-
-@media only screen and (max-aspect-ratio: 7 / 8) {
-    .HomeCenterText {
-        font-size: 3rem;
-    }
-    .Home.Section {
-        padding: 6vh 0;
+    .HomeAbout {
+        font-size: 1.1em;
     }
 }

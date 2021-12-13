@@ -5,7 +5,12 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('./assets/fonts/Montserrat-Regular.ttf') format('ttf');
+    src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Mustica';
+    src: url('./assets/fonts/MusticaproSemibold.otf') format('opentype');
 }
 
 

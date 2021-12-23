@@ -329,7 +329,7 @@ function MontyHall(props) {
         else {
             let didSwitch;
             let didWin;
-            if(index === selectionStatus.split(' ')[0][selectionStatus.split(' ')[0].length - 1]){
+            if(index == selectionStatus.split(' ')[0][selectionStatus.split(' ')[0].length - 1]){
                 didSwitch = false
             } else didSwitch = true
             if(doorPrizes[index] === 'car') didWin = true
@@ -481,6 +481,8 @@ function MontyHall(props) {
 
         const querySnapshot = await getDocs(collection(FirestoreRef.current, 'guess-stats'));
         const document = querySnapshot.docs.find(x => x.id === process.env.REACT_APP_MH_DATABASE_DOCUMENT_ID)
+
+        console.log(`won?: ${didWin}, swap: ${didSwap}`)
         let temp_data = Object.assign({} , document.data())
         if(didSwap) temp_data.swap_total++;
         else temp_data.stay_total++;

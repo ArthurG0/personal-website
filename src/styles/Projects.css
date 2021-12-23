@@ -5,18 +5,9 @@
 
 .IndividualProject {
     display: flex;
-    justify-content: space-around;
     width: 60%;
     margin: auto;
     margin-bottom: 10vh;
-}
-
-.IPLeftSide {
-    width: 45%;
-}
-
-.IPRightSide {
-    width: 45%;
 }
 
 .IPPhoto {
@@ -36,4 +27,26 @@
 
 .IPDesc {
     margin-bottom: 5vh;
+}
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+    .IndividualProject {
+        width: 60%;
+        justify-content: space-around;
+    }
+    .IPLeftSide {
+        width: 45%;
+    }
+    
+    .IPRightSide {
+        width: 45%;
+    }    
+}
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+    .IndividualProject {
+        width: 100%;
+    }
 }

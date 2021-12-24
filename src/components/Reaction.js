@@ -58,7 +58,7 @@ function Reaction() {
         setStatus(0)
         document.getElementsByClassName('ReactionField')[0].classList.remove('green')
         document.getElementsByClassName('ReactionField')[0].classList.remove('yellow')
-        document.getElementsByClassName('ReactionField')[0].innerHTML = 'Not Acticated'
+        document.getElementsByClassName('ReactionField')[0].innerHTML = 'Not Activated'
     }
 }
 
